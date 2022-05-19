@@ -79,17 +79,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag_outlined),
-            label: 'Business',
+            label: 'Bestellliste',
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag),
-            label: 'School',
+            label: 'Warenkorb',
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box),
-            label: 'School',
+            label: 'Profil',
             backgroundColor: Colors.red,
           ),
         ],
