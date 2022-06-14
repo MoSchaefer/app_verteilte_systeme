@@ -5,6 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'start_screen.dart';
 import 'home_screen.dart';
 import 'second_screen.dart';
+import 'login_screen.dart';
+import 'registration_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'lunch break',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
@@ -26,6 +30,9 @@ class MyApp extends StatelessWidget {
         'start_screen': (context) => StartScreen(),
         'home_screen': (context) => HomeScreen(),
         'second_screen': (context) => SecondScreen(),
+        'login_screen': (context) => LoginScreen(),
+        'registration_screen': (context) => RegistrationScreen(),
+
       },
     );
   }

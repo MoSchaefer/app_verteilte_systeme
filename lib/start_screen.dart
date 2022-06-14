@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'rounded_button.dart';
+import 'login_button.dart';
+import 'registration_button.dart';
+import 'package:flutter/src/material/colors.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -20,14 +22,40 @@ class _StartScreenState extends State<StartScreen> {
               fit: BoxFit.cover,
             ),
           ),
-          child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Container(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            //width: 100.0,
+            //height: 100.0,
+
+          child: Container(
+            //width: 100.0,
+            //height: 100.0,
+          decoration: new BoxDecoration(
+              image: DecorationImage(
+
+                  image: AssetImage("images/logo_image.png"),
+                  fit: BoxFit.contain,
+
+                  ),
+                ),
+            //child: const Text('', textAlign: TextAlign.center),
+
+
+              child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.0),
+          child: Container(
+          padding: const EdgeInsets.only(
+              left: 1.0,
+              top: 500.0,
+              right: 1.0,
+              bottom: 1.0,
+              ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-                RoundedButton(
-                      colour: Colors.orange,
+                LoginButton(
+                      colour: Colors.orange.shade300,
                       title: 'Anmelden',
                 //ElevatedButton(
                       //child: const Text('Anmelden'),
@@ -35,15 +63,18 @@ class _StartScreenState extends State<StartScreen> {
                       Navigator.pushNamed(context, 'home_screen');
                     },
                 ),
-                RoundedButton(
-                      colour: Colors.orange,
+                RegistrationButton(
+                      colour: Colors.orange.shade600,
                       title: 'Registrieren',
                 //ElevatedButton(
                       //child: const Text('Registrieren'),
                       onPressed: () {
-                      Navigator.pushNamed(context, 'home_screen');
+                      Navigator.pushNamed(context, 'second_screen');
                       }),
             ]),
+        ),
+        ),
+        ),
         ),
         ),
     );
