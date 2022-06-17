@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:app_verteilte_systeme/buttons/login_button.dart';
 import 'package:app_verteilte_systeme/buttons/registration_button.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/src/material/colors.dart';
 
 class StartScreen extends StatefulWidget {

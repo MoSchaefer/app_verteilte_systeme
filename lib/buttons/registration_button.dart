@@ -1,7 +1,8 @@
+import 'package:app_verteilte_systeme/screens/authenticate/login_authenticate.dart';
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatelessWidget {
-  LoginButton(
+class RegistrationButton extends StatelessWidget {
+  RegistrationButton(
       {required this.colour, required this.title, required this.onPressed});
   final Color colour;
   final String title;
@@ -17,7 +18,11 @@ class LoginButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(30.0),
         child: MaterialButton(
           onPressed: () {
-            Navigator.pushNamed(context, 'home_screen');
+            //Navigator.pushNamed(context, 'registration_button');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Login()),
+            );
           },
           //Go to login screen.
           minWidth: 200.0,
