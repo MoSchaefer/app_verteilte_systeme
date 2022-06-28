@@ -44,9 +44,42 @@ class MyApp extends StatelessWidget {
 // Videolösung
 
 import 'package:app_verteilte_systeme/screens/wrapper.dart';
+import 'package:app_verteilte_systeme/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+import 'package:app_verteilte_systeme/models/user_model.dart';
+/*
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}*/
+/*
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        home: Wrapper(),
+        title: 'lunch break',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+        ),
+      ),
+    );
+  }
+}
+
+
+*/
+
+//void main() => runApp(MyApp());
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,15 +91,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Wrapper(),
-      title: 'lunch break',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+    //return MaterialApp(
+    return StreamProvider<UserModel?>.value(
+        initialData: UserModel(uid: ''),       //????????????????????????????????
+        value: AuthService().user,
+        child: MaterialApp(
+        home: Wrapper(),
+        title: 'lunch break',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
         primarySwatch: Colors.orange,
+        ),
       ),
     );
   }
 }
-
-

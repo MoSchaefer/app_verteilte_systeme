@@ -1,12 +1,19 @@
+import 'package:app_verteilte_systeme/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'second_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+
+  //final AuthService _authService = AuthService();
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final AuthService _authService = AuthService();
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -39,7 +46,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('lunch break App'),
+        title: Text('lunch break App'),
+        elevation: 0.0,
+        actions: <Widget>[
+          FlatButton.icon(
+              icon: Icon(Icons.person),
+              label: Text('Abmelden'),
+              onPressed: () async {
+                await _authService.logout();
+              },
+              )
+
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -76,7 +94,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, 'second_screen');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SecondScreen()),
+          );
         },
         child: const Icon(Icons.shopping_cart),
       ), // This trailing comma makes auto-formatting nicer for build methods.

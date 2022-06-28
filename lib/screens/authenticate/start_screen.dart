@@ -69,7 +69,7 @@ class _StartScreenState extends State<StartScreen> {
                 //ElevatedButton(
                       //child: const Text('Registrieren'),
                       onPressed: () {
-                      Navigator.pushNamed(context, 'second_screen');
+                        Navigator.pushNamed(context, 'home_screen');
                       }),
             ]),
         ),

@@ -1,3 +1,4 @@
+import 'package:app_verteilte_systeme/screens/authenticate/registration_screen.dart';
 import 'package:app_verteilte_systeme/screens/authenticate/login_authenticate.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class RegistrationButton extends StatelessWidget {
             //Navigator.pushNamed(context, 'registration_button');
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const Login()),
+              MaterialPageRoute(builder: (context) => /*const*/ RegistrationScreen()),
             );
           },
           //Go to login screen.

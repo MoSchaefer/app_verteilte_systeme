@@ -1,3 +1,4 @@
+import 'package:app_verteilte_systeme/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -11,7 +12,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Text('home'),
+        child: HomeScreen(),
     );
   }
 }

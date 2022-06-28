@@ -43,6 +43,7 @@ dependencies:
   firebase_auth: ^3.3.19
   modal_progress_hud: ^0.1.3
   flutter_launcher_icons: ^0.9.3
+  provider: ^6.0.3
 
 
 dev_dependencies:
