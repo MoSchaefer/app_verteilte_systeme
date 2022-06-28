@@ -1,11 +1,18 @@
+import 'package:app_verteilte_systeme/home_screen.dart';
 import 'package:app_verteilte_systeme/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
 
 class AuthService {
 
   final FirebaseAuth _authService = FirebaseAuth.instance;
+
   String email = '';
   String password = '';
+
+  Stream<User?> get authStateChanges => _authService.authStateChanges();
+  final databaseRef = FirebaseDatabase.instance.ref();
 
   //Erstellt ein User-Object basierend auf FirebaseUser
   UserModel? _UserFromFirebaseUser(User? user) {
@@ -21,17 +28,27 @@ class AuthService {
   }
 
   //Anmelden mit Email und Passwort
-  Future loginEmailPasswort(
-      String email,
-      String password)
+  Future<UserModel?> loginEmailPasswort({
+      required String email,
+      required String password,
+      required BuildContext context})
   async {
     try{
+      print(email);
+      print(password);
       UserCredential result = await _authService.signInWithEmailAndPassword(
+
+      //await _authService.signInWithEmailAndPassword(
           email: email,
           password: password
       );
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => HomeScreen())
+      );
       User? user = result.user;
       return _UserFromFirebaseUser(user);
+      //return "anmeldung erfolgreich";
+
     } catch(error){
       print(error.toString());
       return null;

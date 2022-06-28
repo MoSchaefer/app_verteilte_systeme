@@ -43,6 +43,8 @@ class MyApp extends StatelessWidget {
 
 // Videolösung
 
+import 'package:app_verteilte_systeme/home_screen.dart';
+import 'package:app_verteilte_systeme/screens/authenticate/start_screen.dart';
 import 'package:app_verteilte_systeme/screens/wrapper.dart';
 import 'package:app_verteilte_systeme/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -88,6 +90,50 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+        providers: [
+          Provider<AuthService>(
+              create: (_) => AuthService()
+          ),
+
+          StreamProvider(
+            create: (context) => context.read<AuthService>().authStateChanges, initialData: null,
+          )
+        ],
+        child: MaterialApp(
+          title: 'lunch break',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.orange,
+          ),
+          home: AuthenticationWrapper(),
+        )
+    );
+  }
+}
+
+class AuthenticationWrapper extends StatelessWidget {
+  const AuthenticationWrapper({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User?>();
+
+    if(firebaseUser != null){
+      print("ja");
+      return HomeScreen();
+    }
+    print("nein");
+    return StartScreen();
+  }
+}
+
+/*class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -106,3 +152,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+*/
