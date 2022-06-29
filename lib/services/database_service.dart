@@ -10,12 +10,12 @@ class DatabaseService {
 
   //collection reference
   final CollectionReference groceriesList = FirebaseFirestore.instance.collection('groceries');
-
+/*
   Future updateUserData(String name, double price) async {
-    return await groceriesList.document(uid).setData({
+    //return await groceriesList.document(uid).setData({
       'name': name,
       'price': price,
     });
   }
-
+*/
 }
