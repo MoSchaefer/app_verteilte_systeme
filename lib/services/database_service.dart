@@ -9,13 +9,29 @@ class DatabaseService {
 
 
   //collection reference
-  final CollectionReference groceriesList = FirebaseFirestore.instance.collection('groceries');
-/*
-  Future updateUserData(String name, double price) async {
-    //return await groceriesList.document(uid).setData({
-      'name': name,
-      'price': price,
+  final CollectionReference productList = FirebaseFirestore.instance.collection('products');
+
+  Future updateUserData(String productName, double productPrice) async {
+    return await productList.document(uid).setData({
+      'name': productName,
+      'price': productPrice,
     });
   }
-*/
+
+/*
+  //test Erstellen eises Dokumets
+  var productName,productPrice;
+  create()async{
+      DocumentReference documentReference =await FirebaseFirestore.instance.collection("productList").add(
+        {
+          'ProductName':productName,
+          'ProductPrice':productPrice,
+        }
+      );
+  }*/
+
+  //Stream zu Firestore
+  Stream<QuerySnapshot> get products {
+    return productList.snapshots();
+  }
 }

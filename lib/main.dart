@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
 
 // Videolösung
 
-import 'package:app_verteilte_systeme/home_screen.dart';
+import 'package:app_verteilte_systeme/screens/home/home_screen.dart';
 import 'package:app_verteilte_systeme/screens/authenticate/start_screen.dart';
 import 'package:app_verteilte_systeme/screens/wrapper.dart';
 import 'package:app_verteilte_systeme/services/auth_service.dart';

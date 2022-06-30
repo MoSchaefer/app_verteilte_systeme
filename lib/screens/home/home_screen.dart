@@ -1,6 +1,10 @@
 import 'package:app_verteilte_systeme/services/auth_service.dart';
 import 'package:flutter/material.dart';
-import 'second_screen.dart';
+import '../../second_screen.dart';
+import 'package:app_verteilte_systeme/services/database_service.dart';
+import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:app_verteilte_systeme/screens/home/product_list.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -15,9 +19,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final AuthService _authService = AuthService();
 
   int _selectedIndex = 0;
+  /*
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
+
     Text(
       'Seite 0: Home',
       style: optionStyle,
@@ -35,6 +41,40 @@ class _HomeScreenState extends State<HomeScreen> {
       style: optionStyle,
     ),
   ];
+  */
+
+  final List<Widget> _pages = <Widget>[
+    Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text("Settings"),
+          Icon(Icons.settings),
+        ],
+      ),
+    ),
+    Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text("Home"),
+          Icon(Icons.home),
+        ],
+      ),
+    ),
+    Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text("Messages"),
+          Icon(Icons.message),
+        ],
+      ),
+    ),
+    Center(
+      child: ProductList(),
+      ),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -44,7 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return StreamProvider<QuerySnapshot>.value
+      (value: DatabaseService().products,
+        //initialData: initialData)
+    //return Scaffold(
+      child: Scaffold(
       appBar: AppBar(
         title: Text('lunch break App'),
         elevation: 0.0,

@@ -1,4 +1,4 @@
-import 'package:app_verteilte_systeme/home_screen.dart';
+import 'package:app_verteilte_systeme/screens/home/home_screen.dart';
 import 'package:app_verteilte_systeme/services/auth_service.dart';
 import 'package:app_verteilte_systeme/screens/authenticate/login_authenticate.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:app_verteilte_systeme/home_screen.dart';
+import 'package:app_verteilte_systeme/screens/home/home_screen.dart';
 import 'package:app_verteilte_systeme/models/user_model.dart';
 import 'package:app_verteilte_systeme/services/database_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -83,7 +83,7 @@ class AuthService {
       User user = result.user!;
 
       //erstellen eines Dokumets für user mit der uid
-      //await DatabaseService(uid: user.uid).updateUserData('new product', 0.0);
+      await DatabaseService(uid: user.uid).updateUserData('new product', 0.0);
       return _UserFromFirebaseUser(user);
     } catch(error){
       print(error.toString());
